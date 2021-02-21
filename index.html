@@ -15,8 +15,8 @@
       <div class="container container--menu">
         <a class="logo" href="./index.html" title="Логотип сайта" lang="en">Web<span class="darked">Studio</span></a>
         
-        <button class="toggle-button" data-menu-button>
-          <svg class="toggle-button__icon" width="24" height="16" aria-label="Переключатель мобильного меню" aria-expanded="false" aria-controls="menu-content">
+        <button class="toggle-button" data-menu-button aria-label="Переключатель мобильного меню" aria-expanded="false" aria-controls="menu-content">
+          <svg class="toggle-button__icon" width="24" height="16">
             <use class="toggle-button__burger" href="./images/sprite.svg#icon-burger"></use>
             <use class="toggle-button__cross" href="./images/sprite.svg#icon-cross"></use>
           </svg>
@@ -143,24 +143,19 @@
         <h2 class="section-title">Чем мы занимаемся</h2>
         <ul class="work__list">
           <li class="work__item">
-              <img
-                srcset="
+              <img srcset="
                 ./images/studio/image1_desktop.jpg 1x,
-                ./images/studio/image1_desktop_@2x.jpg 2x,
+                ./images/studio/image1_desktop_@2x.jpg 2x
                 " 
                 alt="Разработчик пишет код"
-                src="./images/studio/image1_desktop.jpg"
-                />
+                src="./images/studio/image1_desktop.jpg"/>
                 <div class="work__overflow-box">
                   <p class="work__overflow-text">десктопные приложения</p>
                 </div>
           </li>
           <li class="work__item">
-              <img
-                srcset="
-                ./images/studio/image2_desktop.jpg 1x,
-                ./images/studio/image2_desktop_@2x.jpg 2x,
-                " 
+              <img srcset="./images/studio/image2_desktop.jpg 1x,
+                ./images/studio/image2_desktop_@2x.jpg 2x" 
                 alt="Разработчик выбирает макет для мобильного устройства"
                 src="./images/studio/image2_desktop.jpg"/>
                 <div class="work__overflow-box">
@@ -171,7 +166,7 @@
               <img
                 srcset="
                 ./images/studio/image3_desktop.jpg 1x,
-                ./images/studio/image3_desktop_@2x.jpg 2x,
+                ./images/studio/image3_desktop_@2x.jpg 2x
                 " 
                 alt="Дизайнер выбирает цвет в палитре на планшете"
                 src="./images/studio/image3_desktop.jpg"/>
