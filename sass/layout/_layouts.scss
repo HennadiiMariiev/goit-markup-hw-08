@@ -1,0 +1,104 @@
+.header {
+  &--bordered {
+    @include border-outline-style(border-bottom, 1px, solid, getColor('portfolio-border'), unset);
+  }
+}
+
+.hero {
+    width: 100%;
+    min-width: 320px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    @media (max-width: $desktop - 1px) {
+      height: 400px;
+      padding: 118px 0;
+    }
+    @media (min-width: $desktop) {
+      //max-width: 1600px;
+      background-size: auto;
+
+
+      max-height: 600px;
+      padding: 200px 0; 
+    }
+
+    @media (max-width: $mobile) {
+      background-image: linear-gradient(to right, getColor('background-gradient'),
+      getColor('background-gradient')), url('../images/hero/background_mobile.jpg');
+
+      @media (min-resolution: 2dppx) {
+        background-image: linear-gradient(to right, getColor('background-gradient'),
+        getColor('background-gradient')), url('../images/hero/background_mobile_@2x.jpg');
+  
+      }
+    }
+
+    @media (min-width: $mobile + 1px) and (max-width: $tablet) {
+      background-image: linear-gradient(to right, getColor('background-gradient'),
+      getColor('background-gradient')), url('../images/hero/background_tablet.jpg');  
+    
+      @media (min-resolution: 2dppx) {
+        background-image: linear-gradient(to right, getColor('background-gradient'),
+        getColor('background-gradient')), url('../images/hero/background_tablet_@2x.jpg');
+      }
+    }
+
+    @media (min-width: $tablet + 1px) {
+      background-image: linear-gradient(to right, getColor('background-gradient'),
+      getColor('background-gradient')), url('../images/hero/background_desktop.jpg');  
+      
+      @media (min-resolution: 2dppx) {
+        background-image: linear-gradient(to right, getColor('background-gradient'),
+        getColor('background-gradient')), url('../images/hero/background_desktop_@2x.jpg');
+      }
+    }
+  }
+
+  .clients,
+  .team,
+  .qualities,
+  .examples {
+    padding-top: $mobile-section-padding;
+
+    @media (min-width: $desktop){
+      padding-top: $desktop-section-padding;
+    }
+  }
+  
+  .clients,
+  .work,
+  .team,
+  .qualities,
+  .examples {
+    padding-bottom: $mobile-section-padding;
+
+    @media (min-width: $desktop){
+      padding-bottom: $desktop-section-padding;
+    }
+  }
+  
+  .clients,
+  .hero,
+  .work,
+  .team {
+    text-align: center;
+  }
+  
+  .hero,
+  .footer {
+    color: getColor('active');
+  }
+
+  .team {
+    background-color: getColor('background-light');
+  }
+  
+  .footer {
+    padding-top: $footer-padding;
+    padding-bottom: $footer-padding;
+    background-color: getColor('background-dark');
+  }

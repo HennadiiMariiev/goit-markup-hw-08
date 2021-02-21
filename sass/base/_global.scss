@@ -1,0 +1,39 @@
+body {
+    font-family: Roboto, sans-serif;
+    @include text-style(14px, inherit, 1.2, .03em);
+  
+    color: getColor('primary');
+
+    @media (max-width: $tablet - 1px){
+      padding-top: $mobile-section-padding;
+    }
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+    display: block;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }

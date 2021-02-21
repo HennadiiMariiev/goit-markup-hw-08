@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    min-width: 320px;
+    padding: 0 15px;
+    margin: 0 auto;
+    word-wrap: break-word;
+
+    @media (min-width: 480px) {
+      width: $mobile;
+    }
+
+    @media (min-width: 768px) {
+      width: $tablet;
+    }
+
+    @media (min-width: 1200px) {
+      width: $desktop;
+    }
+
+    &--menu {
+      display: flex;
+      align-items: center;
+      @media (max-width: $tablet - 1px){
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: getColor('active');
+      }
+    }
+
+    .header--bordered &--menu {
+      @media (max-width: $tablet - 1px){
+        @include border-outline-style(border-bottom, 1px, solid, getColor('portfolio-border'), unset);
+      }
+    }
+    
+    .footer & {
+      @media (min-width: $tablet){
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      @media (min-width: $desktop){
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+      }
+    }
+  }

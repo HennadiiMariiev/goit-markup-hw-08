@@ -1,0 +1,17 @@
+.hero {
+    &__title {
+    width: 100%;
+    margin: 0 auto 30px;
+  
+    @include text-style(26px, 900, 1.615, .06em, uppercase);
+    
+    @media (min-width: $mobile) {
+      width: 360px;
+    }
+
+    @media (min-width: $desktop) {
+      width: 700px;
+      @include text-style(44px, 900, 1.4, .06em, uppercase);
+    }
+  }   
+}

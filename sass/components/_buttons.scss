@@ -1,0 +1,61 @@
+.button {
+    min-width: 200px;
+    padding: 10px 32px;
+  
+    @include text-style(16px, 700, 1.9, .06em);
+  
+    background-color: getColor('accent');
+    color: getColor('active');
+
+    @include border-outline-style(border, 1px, solid, getColor('accent'), 4px);
+    cursor: pointer;
+    @include transition-mixin(background-color);
+
+    &:hover,
+    &:focus {
+      background-color: getColor('order-hover');
+    }
+
+    &--subscribe {
+      width: 200px;
+      height: 50px;
+      padding: 0;
+      @extend %flex-centered;
+    }
+
+    &--submit {
+      @include transition-mixin(background-color, filter);
+    }
+
+    &--submit:hover,
+    &--submit:focus {
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .hero & {
+      z-index: 100;
+    }
+  }
+  
+  .examples .button {
+    min-width: unset;
+    padding: 6px 22px;
+    @include text-style(16px, 500, 1.6, .03em);
+
+    color: getColor('primary');
+    background-color: getColor('background-light');
+    border: 0;
+    border-radius: 4px;
+
+     @include transition-mixin(background-color, color, box-shadow);
+  
+    
+     &:hover,
+     &:focus {
+       color: getColor('active');  
+       background-color: getColor('accent');
+       box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12), 
+                   0px 1px 2px 0px rgba(0, 0, 0, 0.08),
+                   0px 3px 1px 0px rgba(0, 0, 0, 0.1);
+     }
+   }

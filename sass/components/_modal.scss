@@ -1,0 +1,241 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    overflow-y: scroll;
+  
+    opacity: 1;
+    @include transition-mixin(opacity, visibility); 
+
+    @media (max-width: $mobile - 1px) {
+        padding: 20px 10px;
+    }
+    
+    .header & {
+        visibility: hidden;
+        z-index: 90;
+        opacity: 0;
+        @include transition-mixin(opacity, visibility); 
+        transition-duration: 250ms;
+
+        @media (min-width: $tablet) {
+            position: static;
+            z-index: 1;
+            visibility: visible;
+            opacity: 1;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: getColor('active');
+        }
+    }
+}
+
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: getColor('active');
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 
+                0px 1px 1px rgba(0, 0, 0, 0.14), 
+                0px 2px 1px rgba(0, 0, 0, 0.2);
+    z-index: 101;
+  
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) perspective(581px) rotateY(0deg);
+    @include transition-mixin(transform, opacity); 
+
+    @media (max-width: $mobile - 1px) {
+        position: relative;
+        width: 100%;
+    }
+
+    @media (min-width: $mobile) and (max-width: $desktop - 1px) {
+        width: $compact-modal-width;
+    }
+
+    @media (min-width: $desktop) {
+        width: $normal-modal-width;
+        height: $normal-modal-height;
+    }
+
+    .backdrop.is-hidden & {
+        transform: translate(-50%, -50%) scale(2) perspective(581px) rotateY(90deg);
+        opacity: 0.1;
+    }
+
+    &__title {
+        display: block;
+        margin-bottom: 12px;
+        max-width: 370px;
+        text-align: center;
+        @include text-style(20px, 700, 1.172);
+
+        @media (min-width: $desktop) {
+            max-width: 100%;
+         }
+    }
+
+    &__form {
+        @extend %flex-centered;
+        flex-direction: column;
+
+        color: getColor('inactive');
+    }
+
+    &__label {
+        width: 100%;
+        margin-bottom: 4px;
+
+        @include text-style(12px, 400, 1.172, .01em);
+        color: inherit;
+    }
+
+    &__input,
+    &__textarea {
+        width: 100%;
+        outline: none;
+        @include border-outline-style(border, 1px, solid, rgba(33, 33, 33, 0.2), 4px);
+        @include transition-mixin(border-color);        
+    }
+
+    &__input {
+        height: 40px;
+        padding: 11px 42px;
+    }
+
+    &__textarea {
+        height: 120px;
+        resize: none;
+        margin-bottom: 20px;
+        padding: 12px 16px;
+
+        @media (max-width: $mobile - 1px) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__textarea:placeholder-shown {
+        color: getColor('placeholder');
+    }
+
+    &__box {
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+      
+        fill: getColor('primary');
+        @include transition-mixin(fill);     
+    }
+
+    &__accept {
+        position: relative;
+        margin-bottom: 30px;
+        @include text-style(inherit, inherit, 1.714, .03em);
+
+        @media (max-width: $mobile - 1px) {
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: $mobile) and (max-width: $desktop - 1px) {
+            min-width: 370px;
+        }
+    }
+
+    &__checkbox {
+        clip: rect(0 0 0 0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        outline: none;
+    }
+
+    &__confirm {
+        position: relative;
+        display: inline-block;
+        padding-left: 24px;
+        @include text-style(12px, inherit, 1.171, .03em);   
+
+        @media (min-width: $desktop) {
+            @include text-style(14px, inherit, 1.171, .03em);
+         }
+    }
+
+    &__confirm::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 0;
+        width: 16px;
+        height: 15px;
+        transform: translateY(-50%);
+      
+        background-image: url('../images/square.svg');
+        @include transition-mixin(background-image);    
+    }
+
+    &__checkbox:focus + &__confirm::before {
+        @include border-outline-style(outline, 1px, solid, getColor('accent'), unset);
+    }
+      
+    &__checkbox:checked + &__confirm::before{
+        background-image: url('../images/icon-check.svg');
+    }
+
+    &__box:focus-within > &__input,
+    &__textarea:focus {
+          border-color: getColor('accent');
+    }
+
+    &__box:focus-within > &__icon {
+          fill: getColor('accent');
+    }
+  }
+
+  .accept-link {
+    display: inline;
+    text-decoration: underline;
+    color: getColor('accent');
+  }
+
+  .close-button {
+      position: absolute;
+      @extend %flex-centered;
+
+      top: 8px;
+      right: 8px;
+      width: 30px;
+      height: 30px;
+    
+      background-color: transparent;
+      fill: getColor('primary');
+      cursor: pointer;
+      @include border-outline-style(border, 1px, solid, getColor('close-icon-border'), 50%);
+      @include transition-mixin(fill);
+    
+      &:hover,
+      &:focus {
+          fill: getColor('accent');
+      }   
+  }

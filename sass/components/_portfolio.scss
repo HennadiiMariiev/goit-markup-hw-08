@@ -1,0 +1,144 @@
+.examples {
+    &__filter {
+        width: 100%;    
+        display: flex;
+        flex-wrap: wrap;
+        @media (max-width: $tablet - 1px) {
+            min-width: 170px;
+            margin: -7px -4px;
+        }
+
+        @media (min-width: $tablet) {
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: $desktop) {
+            margin-bottom: 50px;
+        }
+    }
+
+    &__item {
+        @media (max-width: $tablet - 1px) {
+            margin: 7px 4px;
+        }
+    }
+
+    &__item:not(:last-child) {
+        @media (min-width: $tablet) {
+            margin-right: 8px;
+        }
+    }
+
+    &__list {
+        @media (max-width: $tablet - 1px) {
+            display: block;
+            margin-top: 40px;
+        }
+
+        @media (min-width: $tablet) {
+            margin: -15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__card {
+        position: relative;
+            
+        @include border-outline-style(outline, 1px, solid, getColor('border'), unset);
+        
+        @media (max-width: $tablet - 1px) {
+            width: 100%;
+        }
+
+        @media (min-width: $tablet) {
+            width: calc((100% - 4 * 15px) / 2);
+            margin: 15px;
+        }
+
+        @media (min-width: $desktop) {
+            width: calc((100% - 6 * 15px) / 3);
+        }
+    }
+
+    &__card:not(:last-child) {
+        @media (max-width: $tablet - 1px) {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    @include transition-mixin(box-shadow);
+    color: getColor('primary');
+
+    &:hover,
+    &:focus {
+        color: getColor('primary');
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 
+                0px 4px 4px rgba(0, 0, 0, 0.06), 
+                1px 4px 6px rgba(0, 0, 0, 0.16);
+    }
+
+    &__thumb {
+        position: relative;
+        overflow: hidden;
+        cursor: auto;
+    }
+
+    &__overlay {
+        position: absolute;
+        @extend %flex-centered;
+
+        top: 101%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        overflow: auto;
+      
+        background: getColor('overlay');
+      
+        @include transition-mixin(transform);
+    }
+
+    &:hover &__overlay,
+    &:focus &__overlay {
+        transform: translateY(-101%);
+    }
+
+    &__text {
+        width: calc(100% - 24px * 2);
+        text-align: left;
+        
+        color: getColor('active');
+
+        @media (max-width: $mobile - 1px) {
+            @include text-style(14px, 400, 1.555);
+        }
+        @media (min-width: $mobile) {
+            @include text-style(18px, 400, 1.555);
+        }
+    }
+
+    &__meta {
+        padding: 20px 24px 20px;
+    }
+
+    &__title {
+        margin-bottom: 4px;
+  
+        @include text-style(18px, 700, 2, .06em);
+    }
+
+    &__description {
+        @include text-style(16px, 400, 1.9, .03em);
+
+        color: getColor('inactive');
+    }
+}

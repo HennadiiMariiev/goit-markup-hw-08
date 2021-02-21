@@ -1,0 +1,44 @@
+//  Mixin for TEXT styling: allow to set font-size, -weight, 
+//  line-height & letter-spacing.
+@mixin text-style($font-size: inherit, $font-weight: inherit, 
+$line-height: inherit, $letter-spacing: inherit, $text-transform: unset) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+    text-transform: $text-transform;
+}
+
+//  Mixin for TRANSITION: allow to set transition-property (from 1 to 3) 
+//  with variables for time and cubic-function.
+@mixin transition-mixin($property1, $property2: null, $property3: null) {
+    @if $property3 {
+        transition: $property3 $animation-time $cubic-function-variable,
+                    $property2 $animation-time $cubic-function-variable,
+                    $property1 $animation-time $cubic-function-variable;
+    }
+    @else if $property2 {
+        transition: $property2 $animation-time $cubic-function-variable,
+                    $property1 $animation-time $cubic-function-variable;
+    }
+    @else {
+        transition: $property1 $animation-time $cubic-function-variable;
+    }
+}
+
+//  Mixin for BORDERS and OUTLINES: allow to set type, width, style, 
+//  color (using function inside) and border-radius.
+@mixin border-outline-style($type: border, $width: 1px, $style: solid, 
+$color: getColor('primary'), $border-radius: unset) {
+    @if $type == border {
+        border: $width $style $color;
+        border-radius: $border-radius;
+    }
+    @else if $type == border-bottom {
+        border-bottom: $width $style $color;
+        border-radius: $border-radius;
+    }
+    @else {
+        outline: $width $style $color;
+    }
+}

@@ -1,0 +1,55 @@
+// main-container width
+$container-width: 1200px;
+
+// device-width 
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1200px;
+
+// main sections top and bottom paddings
+$mobile-section-padding: 60px;
+$desktop-section-padding: 94px;
+
+// footer padding
+$footer-padding: 60px;
+
+// social ICON size
+$social-icon-width: 20px;
+$social-icon-height: 20px;
+
+// modal size
+$compact-modal-width: 450px;
+$normal-modal-width: 528px;
+$normal-modal-height: 581px;
+
+// variables for ALL animation
+$cubic-function-variable: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-time: 250ms;
+
+
+// COLORS
+$colors: (
+    'primary': rgb(33, 33, 33),
+    'logotype': rgb(0, 0, 0),
+    'accent':  rgb(33, 150, 243),
+    'background-dark': rgb(47, 48, 58),
+    'background-light': rgb(245, 244, 250),
+    'active': rgb(255, 255, 255),
+    'inactive': rgb(117, 117, 117),
+    'border': rgb(238, 238, 238),
+    'portfolio-border': rgb(236, 236, 236),
+    'social-icon': rgb(175, 177, 184),
+    'order-hover': rgb(24, 140, 232),
+    'background-gradient': rgba(47, 48, 58, .4),
+    'overlay-box': rgba(47, 48, 58, .8),
+    'opacity-light': rgba(255, 255, 255, .6),
+    'placeholder': rgba(117, 117, 117, .5),
+    'social-background': rgba(255, 255, 255, .1),
+    'close-icon-border': rgba(0, 0, 0, .1),
+    'mobile-border': rgba(33, 33, 33, .2),
+    'overlay': rgba(33, 150, 243, .9)
+); 
+
+@function getColor($key: 'primary') {
+    @return map-get($colors, $key);
+}

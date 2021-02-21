@@ -1,0 +1,38 @@
+.logo {
+    padding: 16px 0;
+  
+    font-family: Raleway, sans-serif;
+    @include text-style(24px, 700, 1.174);
+
+    &,
+    &:hover,
+    &:focus {
+      color: getColor('accent');
+    }
+
+    .footer & {
+        display: inline-block;
+        margin-right: 0;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    @media (min-width: 768px) {
+      margin-right: 88px;
+      padding: 26px 0;
+    }
+
+    @media (min-width: 1200px) {
+      margin-right: 93px;
+      padding: 24px 0;
+      @include text-style(26px, 700);
+    }
+  }
+
+.darked {
+    color: getColor('logotype');
+}
+
+.inverted {
+    color: getColor('active');
+}

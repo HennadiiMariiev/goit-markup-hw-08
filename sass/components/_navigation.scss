@@ -1,0 +1,309 @@
+.menu-content {
+    @media (max-width: $tablet - 1px) {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        padding: 48px 40px;
+        
+        overflow: hidden;
+        z-index: 98;
+    
+        background-color: getColor('active');
+    
+        @include transition-mixin(transform);
+    }
+
+    @media (max-width: $tablet - 1px) {
+        & .contacts__item:last-child > .contacts__link {
+            color: getColor('accent');
+        }
+        & .contacts__item:not(:last-child) {
+            @include text-style(24px);
+        }
+    }
+    @media (min-width: $tablet){
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+}
+
+.toggle-button {
+    width: 40px;
+    height: 40px;
+    margin-left: auto;  
+    @extend %flex-centered;
+    fill: getColor('primary');
+    background-color: transparent;
+    z-index: 99;
+    border: 0;
+
+    &__burger,
+    &__cross {
+        @include transition-mixin(opacity);
+    }
+    &__cross {
+        opacity: 0;
+    }
+
+    &:hover,
+    &:focus {
+        fill: getColor('accent');
+        @include border-outline-style(outline, 2px, solid, getColor('accent'));
+    }
+
+    &.is-open {
+        position: fixed;
+        top: 10px;
+        right: 15px;
+    }
+
+    &.is-open .toggle-button__cross {
+        opacity: 1;
+    }
+
+    &.is-open .toggle-button__burger {
+        opacity: 0;
+    }
+    &.is-open + .backdrop {
+        visibility: visible;
+        opacity: 1;
+    }
+    &.is-open + .backdrop .menu-content {
+        position: fixed;
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+
+    @media (min-width: $tablet) {
+        display: none;
+    }
+}
+
+.navbar {
+    @media (max-width: $mobile - 1px) {
+        margin-bottom: 20vh;
+    }
+
+    @media (min-width: $mobile) and (max-width: $tablet - 1px){
+        margin-bottom: 300px;
+    }
+
+    @media (min-width: $tablet){
+        display: flex;
+        align-items: stretch;
+    }
+
+    &__list {
+        @media (max-width: $tablet - 1px) {
+            @include text-style(40px, 500, 1.172, .02em);
+        }
+    
+        @media (min-width: $mobile) and (max-width: $tablet - 1px){
+            margin-bottom: 300px;
+        }
+    
+        @media (min-width: $tablet){
+            display: flex;
+            @include text-style(inherit, 500, inherit, .02em);    
+        }
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__item:not(:last-child) {
+        @media (max-width: $tablet - 1px) {
+            margin-bottom: 32px;
+        }
+        @media (min-width: $tablet) {
+            margin-right: 50px;
+        }
+    }
+
+    &__link {
+        color: getColor('primary');
+
+        @include transition-mixin(color); 
+
+        @media (max-width: $mobile - 1px) {
+            @include text-style(30px);
+        }
+        @media (max-width: $tablet - 1px){
+            display: inline-block;
+            padding: 0;
+        }
+        @media (min-width: $tablet){
+            padding: 32px 0;
+        }
+    }
+
+    &__link--accent::after {
+        @media (min-width: $tablet){
+            position: absolute;
+            content: '';
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            background-color: getColor('accent');
+            @include border-outline-style(border, 2px, solid, getColor('accent'), 2px);
+            animation: accent-link-animation $animation-time $cubic-function-variable;    
+        }
+    }
+
+    &__link:hover,
+    &__link:focus,
+    &__link--accent {
+        color: getColor('accent');
+    }
+}
+
+@keyframes accent-link-animation {
+    0% {
+      transform: translateY(-28px) scaleX(0.05);
+    }
+    50% {
+      transform: translateY(0) scaleX(0.1);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+.contacts {
+    @media (max-width: $tablet - 1px){
+        .menu-content & {
+            display: flex;
+            flex-direction: column-reverse;
+            margin-bottom: 64px;
+            @include text-style(34px, 500, 1.172, .02em);    
+        }
+        .menu-content &__item:last-child {
+            margin-bottom: 32px;
+        }
+    }
+
+    @media (min-width: $tablet){ 
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    @media (min-width: $desktop){
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__link {
+        color: getColor('inactive');
+
+        @include transition-mixin(color); 
+
+        @media (max-width: $mobile - 1px) {
+            @include text-style(24px);
+        }
+
+        @media (max-width: $tablet - 1px){
+            display: inline-block;
+            padding: 0;
+        }
+        
+        @media (min-width: $tablet){ 
+            padding: 0;
+            display: flex;
+            align-items: center;
+            @include text-style(12px, 500, 1.172, .02em);    
+        }
+
+        @media (min-width: $desktop){
+            padding: 32px 0;
+            @include text-style(14px, 500, 1.172, .02em);
+        }
+    }
+
+    &__link:hover,
+    &__link:focus {
+        color: getColor('accent');
+    }
+
+    &__item:not(:last-child) {
+        @media (min-width: $tablet){ 
+            margin-bottom: 10px;
+        }
+        @media (min-width: $desktop){
+            margin-right: 30px;
+            margin-bottom: 0;
+        }
+    }
+
+    &__icon {
+        margin-right: 10px;
+        fill: currentColor;
+
+        @media (max-width: $tablet - 1px){
+            display: none;
+        }
+    }
+
+    .footer & {
+        margin-left: 0;
+        display: inline-block;
+    }
+
+    .footer &__item {
+        margin-right: 0;
+    }
+
+    .footer &__item:not(:last-child) {
+        margin-bottom: 9px;
+    }
+
+    .footer &__link {
+        padding: 0;
+        color: getColor('opacity-light');
+        @include text-style(14px, 400, 1.714, .03em);
+    }
+} 
+
+.mobile-social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include text-style(18px, 500, 1.222, .02em);
+    
+    @media (min-width: $tablet){
+        display: none;
+    }
+
+    &__item {
+        position: relative;
+    }
+    &__item:not(:last-child) {
+        margin-right: 20px;
+    }
+    &__link {
+        color: getColor('accent');
+
+        @media (max-width: $mobile - 1px) {
+            @include text-style(10px);
+        }
+    }
+    &__item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -10px;
+        width: 1px;
+        height: 22px;
+        background-color: getColor('mobile-border');
+    
+        @media (max-width: $mobile - 1px) {
+            height: 12px;
+        }
+    }
+}
