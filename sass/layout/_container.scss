@@ -16,26 +16,12 @@
     @media (min-width: 1200px) {
       width: $desktop;
     }
-
-    &--menu {
+    
+    .header & {
       display: flex;
       align-items: center;
-      @media (max-width: $tablet - 1px){
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 100;
-        background-color: getColor('active');
-      }
     }
 
-    .header--bordered &--menu {
-      @media (max-width: $tablet - 1px){
-        @include border-outline-style(border-bottom, 1px, solid, getColor('portfolio-border'), unset);
-      }
-    }
-    
     .footer & {
       @media (min-width: $tablet){
         display: flex;
@@ -48,4 +34,22 @@
         align-items: baseline;
       }
     }
+  }
+
+  .mobile-fixed-menu {
+      margin: 0 auto;
+      width: 100%;
+      @media (max-width: $tablet - 1px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: getColor('active');
+      }
+
+      .header--bordered & {
+        @media (max-width: $tablet - 1px){
+          @include border-outline-style(border-bottom, 1px, solid, getColor('portfolio-border'), unset);
+        }
+      }
   }

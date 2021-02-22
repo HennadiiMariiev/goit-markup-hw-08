@@ -1,15 +1,20 @@
 .menu-content {
     @media (max-width: $tablet - 1px) {
-        position: fixed;
+        position: absolute;
         top: 0;
         right: -100%;
-        width: 100%;
+        width: 100vw;
+        height: 100vh;
         padding: 48px 40px;
-        
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        overflow: scroll;
         z-index: 98;
     
         background-color: getColor('active');
+        @include border-outline-style(border, 1px, solid, getColor('active'));
     
         @include transition-mixin(transform);
     }
@@ -68,12 +73,16 @@
         opacity: 0;
     }
     &.is-open + .backdrop {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
         visibility: visible;
         opacity: 1;
+        overflow: hidden;
     }
     &.is-open + .backdrop .menu-content {
-        position: fixed;
-        transform: translateX(-100%);
+        transform: translateX(-100vw);
         opacity: 1;
     }
 
@@ -83,26 +92,19 @@
 }
 
 .navbar {
-    @media (max-width: $mobile - 1px) {
-        margin-bottom: 20vh;
-    }
-
-    @media (min-width: $mobile) and (max-width: $tablet - 1px){
-        margin-bottom: 300px;
+    @media (max-width: $tablet - 1px) {
+        margin-bottom: 32px;
     }
 
     @media (min-width: $tablet){
         display: flex;
         align-items: stretch;
+        padding: 0 2px;
     }
 
     &__list {
         @media (max-width: $tablet - 1px) {
             @include text-style(40px, 500, 1.172, .02em);
-        }
-    
-        @media (min-width: $mobile) and (max-width: $tablet - 1px){
-            margin-bottom: 300px;
         }
     
         @media (min-width: $tablet){
@@ -159,6 +161,10 @@
     &__link--accent {
         color: getColor('accent');
     }
+    // &__link:focus {
+    //     outline-offset: -2px;
+    //     outline: 3px solid getColor('primary');
+    // }
 }
 
 @keyframes accent-link-animation {
@@ -173,6 +179,16 @@
     }
   }
 
+.positioned {
+    @media (min-width: $tablet){ 
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+    }
+}
+
 .contacts {
     @media (max-width: $tablet - 1px){
         .menu-content & {
@@ -186,17 +202,11 @@
         }
     }
 
-    @media (min-width: $tablet){ 
-        display: flex;
-        align-items: stretch;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: auto;
-    }
-
     @media (min-width: $desktop){
+        display: flex;
         flex-direction: row;
         align-items: center;
+        padding: 0 2px;
     }
 
     &__link {
@@ -230,6 +240,11 @@
     &__link:focus {
         color: getColor('accent');
     }
+
+    // &__link:focus {
+    //     outline-offset: -2px;
+    //     outline: 3px solid getColor('primary');
+    // }
 
     &__item:not(:last-child) {
         @media (min-width: $tablet){ 

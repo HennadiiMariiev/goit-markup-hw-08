@@ -6,7 +6,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 100;
-    overflow-y: scroll;
   
     opacity: 1;
     @include transition-mixin(opacity, visibility); 
@@ -21,13 +20,13 @@
         opacity: 0;
         @include transition-mixin(opacity, visibility); 
         transition-duration: 250ms;
+        overflow: hidden;
 
         @media (min-width: $tablet) {
             position: static;
             z-index: 1;
             visibility: visible;
             opacity: 1;
-            overflow: hidden;
 
             display: flex;
             align-items: center;
