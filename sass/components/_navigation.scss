@@ -210,7 +210,7 @@
         
         @media (min-width: $tablet){ 
             padding: 0;
-            @include flexation(row, flex-start, flex-start);
+            @include flexation(row, center, flex-start);
 
             @include text-style(12px, 500, 1.172, .02em);    
         }
