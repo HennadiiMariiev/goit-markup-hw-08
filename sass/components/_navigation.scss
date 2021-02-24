@@ -6,9 +6,7 @@
         width: 100vw;
         height: 100vh;
         padding: 48px 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flexation(column, flex-start, space-between);
 
         overflow: scroll;
         z-index: 98;
@@ -29,9 +27,7 @@
     }
     @media (min-width: $tablet){
         width: 100%;
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
+        @include flexation(row, stretch, center);
     }
 }
 
@@ -39,7 +35,7 @@
     width: 40px;
     height: 40px;
     margin-left: auto;  
-    @extend %flex-centered;
+    @include flexation();
     fill: getColor('primary');
     background-color: transparent;
     z-index: 99;
@@ -97,8 +93,7 @@
     }
 
     @media (min-width: $tablet){
-        display: flex;
-        align-items: stretch;
+        @include flexation(row, stretch, center);
         padding: 0 2px;
     }
 
@@ -161,10 +156,6 @@
     &__link--accent {
         color: getColor('accent');
     }
-    // &__link:focus {
-    //     outline-offset: -2px;
-    //     outline: 3px solid getColor('primary');
-    // }
 }
 
 @keyframes accent-link-animation {
@@ -181,10 +172,7 @@
 
 .positioned {
     @media (min-width: $tablet){ 
-        display: flex;
-        align-items: stretch;
-        flex-direction: column;
-        justify-content: center;
+        @include flexation(column, stretch, center);
         margin-left: auto;
     }
 }
@@ -192,8 +180,7 @@
 .contacts {
     @media (max-width: $tablet - 1px){
         .menu-content & {
-            display: flex;
-            flex-direction: column-reverse;
+            @include flexation(column-reverse, flex-start);
             margin-bottom: 64px;
             @include text-style(34px, 500, 1.172, .02em);    
         }
@@ -203,9 +190,7 @@
     }
 
     @media (min-width: $desktop){
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        @include flexation();
         padding: 0 2px;
     }
 
@@ -225,8 +210,8 @@
         
         @media (min-width: $tablet){ 
             padding: 0;
-            display: flex;
-            align-items: center;
+            @include flexation(row, flex-start, flex-start);
+
             @include text-style(12px, 500, 1.172, .02em);    
         }
 
@@ -240,11 +225,6 @@
     &__link:focus {
         color: getColor('accent');
     }
-
-    // &__link:focus {
-    //     outline-offset: -2px;
-    //     outline: 3px solid getColor('primary');
-    // }
 
     &__item:not(:last-child) {
         @media (min-width: $tablet){ 
@@ -286,9 +266,7 @@
 } 
 
 .mobile-social {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    @include flexation(row, center, flex-start);
     @include text-style(18px, 500, 1.222, .02em);
     
     @media (min-width: $tablet){

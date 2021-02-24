@@ -9,8 +9,7 @@
         }
 
         @media (min-width: $tablet) {
-            align-items: center;
-            justify-content: center;
+            @include flexation();
             flex-wrap: nowrap;
             margin-bottom: 30px;
         }
@@ -93,7 +92,7 @@
 
     &__overlay {
         position: absolute;
-        @extend %flex-centered;
+        @include flexation();
 
         top: 101%;
         left: 0;

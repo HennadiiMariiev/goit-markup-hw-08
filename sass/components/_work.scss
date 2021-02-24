@@ -23,7 +23,7 @@
         width: 100%;
         height: 70px;
 
-        @extend %flex-centered;
+        @include flexation();
     
         background-color: getColor('overlay-box');
     }

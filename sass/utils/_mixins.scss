@@ -42,3 +42,11 @@ $color: getColor('primary'), $border-radius: unset) {
         outline: $width $style $color;
     }
 }
+
+// Mixin to flex and to manage elements
+@mixin flexation($direction: row, $align-items: center, $justify-content: center) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
