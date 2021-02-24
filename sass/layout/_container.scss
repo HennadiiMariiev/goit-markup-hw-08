@@ -18,7 +18,7 @@
     }
     
     .header & {
-      @include flexation();
+      @include flexation(row, center, stretch);
     }
 
     .footer & {
