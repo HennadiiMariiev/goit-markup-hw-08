@@ -1520,6 +1520,12 @@ li {
   }
 }
 
+@media (min-width: 768px) {
+  .team__list {
+    margin: -15px;
+  }
+}
+
 .team__card {
   position: relative;
   width: 100%;
@@ -1537,7 +1543,8 @@ li {
 
 @media (min-width: 768px) {
   .team__card {
-    width: calc((100% - 30px) / 2);
+    width: calc((100% - 2 * 30px) / 2);
+    margin: 15px;
   }
 }
 
@@ -1549,24 +1556,6 @@ li {
 
 @media (max-width: 767px) {
   .team__card:not(:last-child) {
-    margin-bottom: 30px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .team__card:not(:last-child) {
-    margin-right: 30px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .team__card:nth-child(odd) {
-    margin-right: 30px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .team__card:nth-child(-n + 2) {
     margin-bottom: 30px;
   }
 }
