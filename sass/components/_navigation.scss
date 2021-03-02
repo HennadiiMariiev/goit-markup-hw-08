@@ -221,11 +221,6 @@
         }
     }
 
-    &__link:hover,
-    &__link:focus {
-        color: getColor('accent');
-    }
-
     &__item:not(:last-child) {
         @media (min-width: $tablet){ 
             margin-bottom: 10px;
@@ -262,6 +257,11 @@
         padding: 0;
         color: getColor('opacity-light');
         @include text-style(14px, 400, 1.714, .03em);
+    }
+
+    &__link:hover,
+    &__link:focus {
+        color: getColor('accent');
     }
 } 
 

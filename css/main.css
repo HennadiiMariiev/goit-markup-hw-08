@@ -1222,10 +1222,6 @@ li {
   }
 }
 
-.contacts__link:hover, .contacts__link:focus {
-  color: #2196f3;
-}
-
 @media (min-width: 768px) {
   .contacts__item:not(:last-child) {
     margin-bottom: 10px;
@@ -1271,6 +1267,10 @@ li {
   line-height: 1.714;
   letter-spacing: 0.03em;
   text-transform: unset;
+}
+
+.contacts__link:hover, .contacts__link:focus {
+  color: #2196f3;
 }
 
 .mobile-social {
